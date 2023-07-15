@@ -1,17 +1,19 @@
 # spring_MVC_reservation
-Web API 명세서
+# 
 
+**Web API 명세서**
 
 이번 프로젝트에서는 예약 메인 페이지에서 필요한 3가지의 Web API와 상세페이지와 관련된 2가지의 Web API를 작성하도록 하겠습니다.
 
-
 먼저 예약 메인 페이지에서 필요한 3가지의 Web API를 살펴보겠습니다.
 
-카테고리 목록 구하기
+**카테고리 목록 구하기**
+
 GET (카테고리 목록 구하기): /api/categories
 
-<응답결과>
+**<응답결과>**
 
+```
 {
     "size": 5,
     "items": [
@@ -43,21 +45,27 @@ GET (카테고리 목록 구하기): /api/categories
     ]
 }
 
+```
+
 각속성의 설명은 다음과 같습니다.
 
-items : 카테고리 목록
-id : 카테고리 id
-name : 카테고리 이름
-count : 카테고리에 포함된 전시 상품(display_info)의 수. 주의해야할 것은 하나의 상품이 여러 곳에 전시될 수 있다.
+items : 카테고리 목록
 
+id : 카테고리 id
 
-상품 목록 구하기 API 스펙 & test
+name : 카테고리 이름
+
+count : 카테고리에 포함된 전시 상품(display_info)의 수. 주의해야할 것은 하나의 상품이 여러 곳에 전시될 수 있다.
+
+**상품 목록 구하기 API 스펙 & test**
+
 GET (상품 목록 구하기): /api/displayinfos
 
+!https://cphinf.pstatic.net/mooc/20200527_190/1590558548299zj8qd_PNG/mceclip0.png
 
+**<응답결과>**
 
-<응답결과>
-
+```
 {
     "totalCount": 16,
     "productCount": 4,
@@ -141,18 +149,23 @@ GET (상품 목록 구하기): /api/displayinfos
     ]
 }
 
+```
+
 각 속성의 설명은 다음과 같습니다
 
-totalCount : 해당 카테고리의 전시 상품 수
-productCount : 읽어온 전시 상품 수
-products : 전시 상품 정보
+totalCount : 해당 카테고리의 전시 상품 수
 
+productCount : 읽어온 전시 상품 수
 
-프로모션 정보 구하기 API 스펙 & test
+products : 전시 상품 정보
+
+**프로모션 정보 구하기 API 스펙 & test**
+
 GET (프로모션 목록 구하기): /api/promotions
 
-<결과>
+**<결과>**
 
+```
 {
     "size": 11,
     "items": [
@@ -247,23 +260,27 @@ GET (프로모션 목록 구하기): /api/promotions
     ]
 }
 
+```
+
 각 속성의 설명은 다음과 같습니다.
 
-size : 프로모션 정보의 수
-items : 프로모션 상품 정보
-fileId : file_info 테이블의 id (product_image의 타입중 ma인 경우만)
+size : 프로모션 정보의 수
 
+items : 프로모션 상품 정보
+
+fileId : file_info 테이블의 id (product_image의 타입중 ma인 경우만)
 
 이번에는 상세보기 페이지에 관련된 2가지 Web API를 작성합니다.
 
+**전시 정보 구하기**
 
-전시 정보 구하기
 GET (카테고리 목록 구하기): /api/displayinfos/{displayId}
+
 displayId에 해당하는 전시 정보를 다음과 같은 형태로 읽어옵니다.
 
+**<응답결과>**
 
-<응답결과>
-
+```
 {
     "product": {
         "id": 1,
@@ -342,22 +359,32 @@ displayId에 해당하는 전시 정보를 다음과 같은 형태로 읽어옵�
         }
     ]
 }}
+
+```
+
 각속성의 설명은 다음과 같습니다.
 
-product : 상품정보
-productImages : 상품 이미지 정보들
-displayInfoImages : 전시 이미지 정보들
-avgScore : 댓글 점수의 평균 (int값)
-productPrices : 상품 가격 정보들
+product : 상품정보
 
-댓글 목록 구하기 API 스펙 & test
+productImages : 상품 이미지 정보들
+
+displayInfoImages : 전시 이미지 정보들
+
+avgScore : 댓글 점수의 평균 (int값)
+
+productPrices : 상품 가격 정보들
+
+**댓글 목록 구하기 API 스펙 & test**
+
 GET (댓글 목록 구하기): /api/comments
+
 상품의 댓글을 최대 5건씩 읽어온다. 댓글은 상품별로 저장됩니다.
 
+!https://cphinf.pstatic.net/mooc/20200527_162/1590559305737Yh1Jq_PNG/mceclip1.png
 
+**<응답결과>**
 
-<응답결과>
-
+```
 {
     "totalCount": 15,
     "commentCount": 5,
@@ -418,30 +445,40 @@ GET (댓글 목록 구하기): /api/comments
             "reservationUserCommentImages": []
         }
     ]
-} 
+}
+
+```
 
 각 속성의 설명은 다음과 같습니다.
 
-totalCount : 해당 상품의 댓글 전체 수
-commentCount : 읽어온 댓글 수
-reservationUserComments : 댓글 정보
+totalCount : 해당 상품의 댓글 전체 수
 
+commentCount : 읽어온 댓글 수
 
+reservationUserComments : 댓글 정보
 
+---
 
+**2. 프로젝트 개발스펙**
 
-2. 프로젝트 개발스펙
-
-
-웹백엔드 기술요구사항
+**웹백엔드 기술요구사항**
 
  제공된 SQL을 이용해서 테이블을 생성하고, 샘플데이터를 입력합니다.
+
  maven을 이용해서 웹 어플리케이션 프로젝트를 작성합니다.
+
  학습했던 것처럼 controller,service,dao로 레이어드 아키텍쳐를 구성합니다.
+
  spring JDBC를 이용하여 주어진 테이블로부터 입력, 수정, 삭제, 조회하는 DAO와 DTO를 작성합니다.
+
  서비스 인터페이스를 작성하고 해당 서비스 인터페이스에 비지니스 메소드를 작성합니다.
+
  서비스 인터페이스를 구현하는 클래스를 작성합니다.
+
  해당 구현 클래스의 메소드에 적절한 트랜잭션에 관련된 애노테이션을 사용합니다.
+
  클라이언트에게 Web API를 제공하기 위해 RestController 를 작성합니다.
+
  Swagger를 이용해 Web API 테스트 페이지를 제공합니다.
+
  Web API를 JUnit을 이용해 Test합니다.
